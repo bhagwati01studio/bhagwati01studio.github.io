@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#102b25" />
+  <meta name="description" content="Bhagwati Studio is an independent app studio building simple, thoughtful mobile apps. Explore our apps, including HabiQuest, a daily habit tracker for Android." />
+  <title>Bhagwati Studio | Thoughtful Apps for Everyday Life</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #173129;
+      --muted: #5d716a;
+      --green: #167b59;
+      --green-dark: #0c5039;
+      --line: #dce8e1;
+      --bg: #f8faf7;
+      --surface: #ffffff;
+      --mint: #e8f6ed;
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid #67d4a1; outline-offset: 4px; border-radius: 6px; }
+    .wrap { width: min(1100px, calc(100% - 40px)); margin-inline: auto; }
+
+    .site-header {
+      background: rgba(255, 255, 255, .95);
+      border-bottom: 1px solid var(--line);
+    }
+    .header-inner { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; font-weight: 800; letter-spacing: -.03em; font-size: 1.12rem; }
+    .brand-mark {
+      width: 42px; height: 42px; display: grid; place-items: center;
+      background: var(--ink); color: #fff; border-radius: 13px;
+      font-size: 1.28rem; letter-spacing: -.06em;
+    }
+    nav { display: flex; align-items: center; gap: 27px; }
+    nav a { text-decoration: none; color: #415b50; font-size: .94rem; font-weight: 600; }
+    nav a:hover, .footer-links a:hover { color: var(--green); }
+
+    .hero {
+      padding: clamp(76px, 10vw, 124px) 0 94px;
+      background: radial-gradient(circle at 85% 30%, #dcf3e4 0, transparent 32%),
+                  linear-gradient(145deg, #f8faf7, #f0f7f0);
+      border-bottom: 1px solid var(--line);
+    }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--green-dark); font-size: .82rem; font-weight: 800; text-transform: uppercase; letter-spacing: .13em; }
+    .eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #1e9f72; }
+    h1 { max-width: 810px; margin: 21px 0 19px; font-size: clamp(2.6rem, 6.3vw, 5rem); letter-spacing: -.058em; line-height: 1.11; }
+    h1 span { color: var(--green); }
+    .hero p { max-width: 650px; margin: 0 0 30px; font-size: clamp(1rem, 1.8vw, 1.19rem); color: var(--muted); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      min-height: 47px; padding: 10px 20px; border-radius: 12px; text-decoration: none;
+      background: var(--green); color: #fff; font-weight: 700; transition: background .15s ease, transform .15s ease;
+    }
+    .btn:hover { background: var(--green-dark); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--green-dark); border: 1px solid #9ccbb0; }
+    .btn-outline:hover { background: #eaf6ee; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    section.content { padding: 88px 0; }
+    .section-label { color: var(--green); font-weight: 800; text-transform: uppercase; letter-spacing: .12em; font-size: .8rem; }
+    h2 { font-size: clamp(1.9rem, 3.5vw, 2.7rem); letter-spacing: -.045em; line-height: 1.2; margin: 10px 0 12px; }
+    .section-intro { color: var(--muted); margin: 0 0 30px; max-width: 680px; }
+
+    .app-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(230px, .8fr); gap: 18px; }
+    .app-card, .next-card { border-radius: var(--radius); border: 1px solid var(--line); overflow: hidden; background: var(--surface); }
+    .app-card { padding: 32px; display: flex; flex-direction: column; align-items: flex-start; }
+    .app-identity { display: flex; gap: 15px; align-items: center; margin-bottom: 24px; }
+    .app-icon { width: 67px; height: 67px; border-radius: 19px; background: #daf5e5; border: 1px solid #b9e3c9; display: grid; place-items: center; color: #08734a; }
+    .app-icon svg { width: 37px; height: 37px; }
+    .app-name { margin: 0; line-height: 1.22; font-size: 1.35rem; letter-spacing: -.03em; }
+    .app-type { color: var(--muted); font-size: .89rem; margin-top: 4px; }
+    .tag { display: inline-flex; padding: 5px 10px; font-weight: 700; font-size: .77rem; background: var(--mint); color: var(--green-dark); border-radius: 999px; }
+    .app-card > p { color: var(--muted); margin: 18px 0 22px; max-width: 590px; }
+    .text-link { font-weight: 750; color: var(--green-dark); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    .text-link:hover { color: var(--green); }
+    .next-card { background: #e9f3ed; border-color: #d3e5d8; padding: 32px; display: flex; flex-direction: column; justify-content: center; }
+    .next-symbol { font-size: 2.2rem; color: var(--green); margin-bottom: 22px; line-height: 1; }
+    .next-card h3 { margin: 0 0 9px; font-size: 1.4rem; letter-spacing: -.03em; }
+    .next-card p { color: #51685b; margin: 0; }
+
+    .about-band { background: #102b25; color: #fff; padding: 76px 0; }
+    .about-inner { display: grid; grid-template-columns: 1fr 1.15fr; gap: 45px; align-items: center; }
+    .about-band .section-label { color: #8ce3af; }
+    .about-band h2 { margin-bottom: 0; }
+    .about-band p { color: #d0ded6; margin: 0; font-size: 1.06rem; }
+
+    .contact { text-align: center; padding: 84px 0 90px; }
+    .contact p { color: var(--muted); max-width: 620px; margin: 0 auto 24px; }
+    footer { background: #fff; border-top: 1px solid var(--line); }
+    .footer-inner { padding: 25px 0; display: flex; gap: 16px; align-items: center; justify-content: space-between; }
+    .footer-inner small { color: var(--muted); }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 19px; font-size: .88rem; }
+    .footer-links a { color: #516c60; text-decoration: none; }
+
+    @media (max-width: 760px) {
+      .header-inner { min-height: 69px; }
+      nav { gap: 15px; }
+      nav a { font-size: .86rem; }
+      .brand { font-size: 1rem; }
+      .brand-mark { width: 36px; height: 36px; }
+      .hero { padding: 73px 0; }
+      .app-grid, .about-inner { grid-template-columns: 1fr; }
+      .app-card, .next-card { padding: 25px; }
+      section.content { padding: 64px 0; }
+      .about-band { padding: 64px 0; }
+      .about-inner { gap: 20px; }
+      .contact { padding: 69px 0; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/" aria-label="Bhagwati Studio home">
+        <span class="brand-mark" aria-hidden="true">B.</span>
+        <span>Bhagwati Studio</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#apps">Our apps</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="wrap">
+        <div class="eyebrow">Independent app studio</div>
+        <h1 id="hero-heading">Thoughtful apps for <span>everyday life.</span></h1>
+        <p>At Bhagwati Studio, we create simple, useful and approachable mobile experiences—designed to make everyday tasks a little easier and more enjoyable.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#apps">Explore our apps <span aria-hidden="true">↗</span></a>
+          <a class="btn btn-outline" href="#about">About the studio</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="content" id="apps" aria-labelledby="apps-heading">
+      <div class="wrap">
+        <div class="section-label">What we build</div>
+        <h2 id="apps-heading">Our apps</h2>
+        <p class="section-intro">Explore our growing collection of mobile apps. We'll add more projects here as they're ready to share.</p>
+        <div class="app-grid">
+          <article class="app-card">
+            <div class="app-identity">
+              <div class="app-icon" aria-hidden="true">
+                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 34V21" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                  <path d="M20 22C9 22 6 15 6 8c10 0 15 4 16 13" fill="#35ad75"/>
+                  <path d="M20 24c0-10 5-15 15-16 0 10-5 16-15 16" fill="#08734a"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="app-name">HabiQuest</h3>
+                <div class="app-type">Daily Habit Tracker · Android</div>
+              </div>
+            </div>
+            <span class="tag">Productivity</span>
+            <p>Build daily routines, track habit streaks and see your consistency through visual calendars and colorful progress heatmaps. Small steps make a difference.</p>
+            <a class="text-link" href="/HabiQuest/">View HabiQuest privacy policy <span aria-hidden="true">↗</span></a>
+          </article>
+          <aside class="next-card" aria-label="Future apps">
+            <div class="next-symbol" aria-hidden="true">✳</div>
+            <h3>More to come.</h3>
+            <p>Bhagwati Studio is more than one app. New projects and releases will be showcased here as they become available.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-band" id="about" aria-labelledby="about-heading">
+      <div class="wrap about-inner">
+        <div>
+          <div class="section-label">About us</div>
+          <h2 id="about-heading">Small details. Better experiences.</h2>
+        </div>
+        <p>Bhagwati Studio is an independent mobile-app developer focused on practical ideas, thoughtful interfaces and experiences that respect people's time. Our work starts with a simple question: how can an app make daily life a bit better?</p>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-heading">
+      <div class="wrap">
+        <div class="section-label">Get in touch</div>
+        <h2 id="contact-heading">Questions or feedback?</h2>
+        <p>We welcome questions, suggestions and feedback about our apps.</p>
+        <a class="btn" href="mailto:bhagwati.01.studio@gmail.com">Email Bhagwati Studio <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <small>© Bhagwati Studio. Independent app development.</small>
+      <div class="footer-links">
+        <a href="/HabiQuest/">HabiQuest Privacy Policy</a>
+        <a href="/app-ads.txt">app-ads.txt</a>
+        <a href="mailto:bhagwati.01.studio@gmail.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
